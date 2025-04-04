@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #superhero-section {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Heroverse Dashboard!</h1>
+  <p>Only logged-in users can see this page.</p>
+
+  <!-- ✅ Buy/Sell Superhero Section -->
+  <div id="superhero-section">
+    <h2>Superhero Book Market</h2>
+    <button onclick="alert('Redirecting to Buy Section...')">Buy Superhero Books</button>
+    <button onclick="alert('Redirecting to Sell Section...')">Sell Superhero Books</button>
+  </div>
+
+  <!-- ✅ Home Button -->
+  <div>
+    <button onclick="window.location.href='index.html'">Go to Home</button>
+  </div>
+
+  <button id="logout-btn">Logout</button>
+
+  <script>
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const token = localStorage.getItem("token");
+
+    if (!isLoggedIn || !token) {
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

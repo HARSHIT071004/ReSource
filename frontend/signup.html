@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #2a2a2a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 30px;
+    }
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      animation: slideIn 1s ease-out;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ff758c;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: rgba(50, 50, 50, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #e0e0e0;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    input:focus {
+      border-color: #ff758c;
+      background: rgba(70, 70, 70, 0.8);
+      box-shadow: 0 0 10px rgba(255, 117, 140, 0.5);
+    }
+    button {
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+    }
+    button:hover {
+      background: linear-gradient(to right, #ff7eb3, #ff758c);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Signup Page</h2>
+    <form id="signup-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const email    = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: username,
+            email: email,
+            password: password
+          })
+        });
+
+        const data = await res.json();
+        alert(data.msg || "Signup successful!");
+
+        if (res.ok) {
+          window.location.href = "login.html";
+        }
+      } catch (err) {
+        console.error("Error:", err);
+        alert("Something went wrong during signup.");
+      }
+    });
+  </script>
+</body>
+</html>

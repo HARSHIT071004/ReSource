@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #2a2a2a; /* Greyish dark background */
+            color: #e0e0e0; /* Light gray text */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7); /* Original black-type background */
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Deep shadow */
+            backdrop-filter: blur(10px); /* Glassmorphism */
+            animation: slideIn 1s ease-out; /* Animation */
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(to right, #00ddeb, #00c6ff); /* Gradient heading */
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            color: #00e7ff; /* Highlight color */
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(to right, #00b4db, #0083b0); /* Button gradient */
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 180, 219, 0.4);
+        }
+        .btn:hover {
+            background: linear-gradient(to right, #0083b0, #00b4db);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 180, 219, 0.6);
+        }
+        /* Animation */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Work Page</h1>
+        <p>Here you will find detailed information about all your <span class="highlight">projects</span> and tasks. We bring creativity and innovation to every piece of work we undertake.</p>
+        <p>Our goal is to ensure <span class="highlight">excellence</span> and efficiency in every project, no matter the scale. Explore your work with us!</p>
+        <a href="index.html" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
